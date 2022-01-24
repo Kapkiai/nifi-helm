@@ -152,10 +152,19 @@ service:
 ##
 ingress:
   enabled: true
-  annotations: {}
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/affinity-mode: persistent
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/session-cookie-name: nifi-cookie
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   tls: []
-  hosts: []
+  hosts: 
+    - nifi.apache.com
   path: /
+  pathType: ImplementationSpecific
   # If you want to change the default path, see this issue https://github.com/cetic/helm-nifi/issues/22
 
 # Amount of memory to give the NiFi java heap
