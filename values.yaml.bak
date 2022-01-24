@@ -57,7 +57,7 @@ properties:
   externalSecure: false
   isNode: true
   httpsPort: 8443 
-  webProxyHost: "nifi-test.big-data.blueprint.lab"
+  webProxyHost: "192.168.49.2:30029"
   clusterPort: 6007
   provenanceStorage: "8 GB"
   siteToSite:

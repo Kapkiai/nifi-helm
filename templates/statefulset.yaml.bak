@@ -239,11 +239,7 @@ spec:
       - name: clean-logs
         imagePullPolicy: {{ .Values.sidecar.imagePullPolicy | default "Always" | quote }}
         image: "{{ .Values.sidecar.image }}:{{ .Values.sidecar.tag }}"
-        command:
-        - sh
-        - -c
-        - while true; do rm -rf /opt/nifi/nifi-current/logs/nifi-app*202*; sleep 10;
-          done
+        args: [rm, -rf, /var/log/nifi-app.log]
         resources:
 {{ toYaml .Values.logresources | indent 10 }}
         volumeMounts:
