@@ -198,9 +198,6 @@ spec:
           - name: "zookeeper-properties"
             mountPath: /opt/nifi/nifi-current/conf/zookeeper.properties
             subPath: "zookeeper.properties"
-          - name: "flow-content"
-            mountPath: /opt/nifi/data/flow.xml
-            subPath: "flow.xml"
           - name: "startup"
             mountPath: /opt/nifi/scripts/startup.sh
             subPath: "startup.sh"
@@ -291,12 +288,6 @@ spec:
           items:
             - key: "zookeeper.properties"
               path: "zookeeper.properties"
-      - name: "flow-content"
-        configMap:
-          name: {{ template "apache-nifi.fullname" . }}-config
-          items:
-            - key: "flow.xml"
-              path: "flow.xml"
       - name: "startup"
         configMap:
           name: {{ template "apache-nifi.fullname" . }}-config

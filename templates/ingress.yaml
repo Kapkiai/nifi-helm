@@ -38,7 +38,8 @@ spec:
             backend:
               service: 
                 name: {{ $fullName }}
-                port:  {{ $ingressHttpsPort }}
+                port:
+                  number:  {{ $ingressHttpsPort }}
             pathType: {{ $pathType }}
   {{- end }}
 {{- end }}
